@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
 import json
+from urllib.parse import quote
 from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
 from .models import CarMake, CarModel
@@ -108,7 +109,7 @@ def get_dealerships(request, state="All"):
     if (state == "All"):
         endpoint = "/fetchDealers"
     else:
-        endpoint = "/fetchDealers/" + state
+        endpoint = "/fetchDealers/" + quote(state, safe='')
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
