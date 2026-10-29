@@ -1,0 +1,2 @@
+theia@theia-romanschartn:/home/project/xrwvm-fullstack_developer_capstone/server/database$ curl -X GET "https://romanschartn-3030.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/fetchReviews/dealer/29"
+[{"_id":"6ae3744f4562579da8bd68f8","id":3,"name":"Lion Reames","dealership":29,"review":"Expanded global groupware","purchase":true,"purchase_date":"10/20/2020","car_make":"Mazda","car_model":"MX-5","car_year":2003,"__v":0}]

@@ -1,0 +1,2 @@
+theia@theia-romanschartn:/home/project/xrwvm-fullstack_developer_capstone/server/database$ curl -X GET "https://romanschartn-3030.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/fetchDealers/Kansas"
+[{"_id":"6ae3744f4562579da8bd68ca","id":8,"city":"Topeka","state":"Kansas","address":"288 Larry Place","zip":"66642","lat":"39.0429","long":"-95.7697","short_name":"Bytecard","full_name":"Bytecard Car Dealership","__v":0}]
