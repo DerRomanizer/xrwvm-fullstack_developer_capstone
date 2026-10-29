@@ -422,19 +422,18 @@ und einen Fenster-Capture per PowerShell `PrintWindow`, damit die URL im Bild is
    (steht in `.env` und `analyzereview.txt`). Code-Engine-Befehle nur in der
    vorkonfigurierten "Code Engine CLI" aus der Skills Network Toolbox absetzen,
    im normalen Lab-Terminal fehlt die Resource Group.
-2. Kubernetes-Lab (Modul 5b) hat den Host
+2. Erledigt am 2026-10-29: Kubernetes-Lab (Modul 5b) hat den Host
    `theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai`.
-   Node-API läuft dort per `docker-compose up` und ist öffentlich unter
-   `https://romanschartn-3030.<Host>` erreichbar (steht als `backend_url` in
-   `.env`). Deployment-URL ist `https://romanschartn-8000.<Host>`
-   (`submission/deploymentURL.txt`). Noch zu tun im Lab: `git pull`,
-   Django-Image bauen und pushen, `kubectl apply -f deployment.yaml`,
-   `port-forward`.
-3. Screenshots `deployed_landingpage`, `deployed_loggedin`,
-   `deployed_dealer_detail`, `deployed_add_review` mit der Lab-URL.
-4. Optional: `CICD.txt` im Lab mit `gh run list` / `gh run view <id> --verbose`
-   neu erzeugen (Inhalt stammt aus den echten GitHub-API-Daten des Laufs
-   40915289908).
+   Node-API lief dort per `docker-compose up` (öffentlich unter
+   `https://romanschartn-3030.<Host>`, steht als `backend_url` in `.env`),
+   Django-Image gebaut, gepusht, `kubectl apply`, Port-Forward. Deployment-URL
+   `https://romanschartn-8000.<Host>` (`submission/deploymentURL.txt`).
+3. Erledigt: Die vier `deployed_*.png` wurden von hier aus gegen die Lab-URL
+   aufgenommen (Pod über den öffentlichen Proxy erreichbar). Alle 28 Rubrik-
+   Punkte sind in `submission/checkliste.md` den Dateien zugeordnet.
+4. Offen ist nur noch das Hochladen auf Coursera durch den User. Lab-Sitzungen
+   sind flüchtig: Wenn Reviewer die Deployment-URL später aufrufen, ist sie
+   vermutlich tot, das ist im Kurs so erwartet ("need not be accessible").
 
 ### Lab-Anleitungen lesen, ohne zu blättern
 
