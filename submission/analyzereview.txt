@@ -1,0 +1,2 @@
+theia@theia-romanschartn:/home/project/xrwvm-fullstack_developer_capstone/server$ curl -X GET "https://sentianalyzer.REPLACE-WITH-CODE-ENGINE-ID.us-south.codeengine.appdomain.cloud/analyze/Fantastic%20services"
+{"sentiment": "positive"}

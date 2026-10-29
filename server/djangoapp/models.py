@@ -1,8 +1,8 @@
 # Uncomment the following imports before adding the Model code
 
-# from django.db import models
+from django.db import models
 # from django.utils.timezone import now
-# from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -12,6 +12,13 @@
 # - Description
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
+class CarMake(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    country = models.CharField(max_length=100, blank=True, default="")
+
+    def __str__(self):
+        return self.name  # Return the name as the string representation
 
 
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
@@ -23,3 +30,31 @@
 # - Year (IntegerField) with min value 2015 and max value 2023
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
+class CarModel(models.Model):
+    SEDAN = 'SEDAN'
+    SUV = 'SUV'
+    WAGON = 'WAGON'
+    COUPE = 'COUPE'
+    CAR_TYPES = [
+        (SEDAN, 'Sedan'),
+        (SUV, 'SUV'),
+        (WAGON, 'Wagon'),
+        (COUPE, 'Coupe'),
+    ]
+
+    # Many-To-One relationship: one car make has many car models
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
+    # Refers to a dealer served by the Express-Mongo backend
+    dealer_id = models.IntegerField(default=0)
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=10, choices=CAR_TYPES, default=SUV)
+    year = models.IntegerField(
+        default=2023,
+        validators=[
+            MaxValueValidator(2023),
+            MinValueValidator(2015),
+        ],
+    )
+
+    def __str__(self):
+        return self.car_make.name + " " + self.name
