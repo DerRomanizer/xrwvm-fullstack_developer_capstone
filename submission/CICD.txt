@@ -1,0 +1,32 @@
+theia@theia-romanschartn:/home/project/xrwvm-fullstack_developer_capstone$ gh run list
+STATUS  TITLE                                              WORKFLOW   BRANCH  EVENT  ID           ELAPSED  AGE
+✓       Add lint workflow and Kubernetes deployment files  Lint Code  main    push   40915289908  14s      about 2 minutes ago
+
+theia@theia-romanschartn:/home/project/xrwvm-fullstack_developer_capstone$ gh run view 40915289908 --verbose
+
+✓ main Lint Code · 40915289908
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Lint Python Files in 8s (ID 123593772947)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Set up Python
+  ✓ Install dependencies
+  ✓ Print working directory
+  ✓ Run Linter
+  ✓ Post Set up Python
+  ✓ Post Checkout Repository
+  ✓ Complete job
+✓ Lint JavaScript Files in 11s (ID 123593773381)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Install Node.js
+  ✓ Install JSHint
+  ✓ Run Linter
+  ✓ Post Install Node.js
+  ✓ Post Checkout Repository
+  ✓ Complete job
+
+For more information about a job, try: gh run view --job=<job-id>
+View this run on GitHub: https://github.com/DerRomanizer/xrwvm-fullstack_developer_capstone/actions/runs/40915289908

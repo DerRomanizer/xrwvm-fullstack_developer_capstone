@@ -60,6 +60,9 @@ server/
     static/                           Home.html, About.html, Contact.html, Bilder, style.css
 ```
 
+> **Stand 2026-10-29 (lokale Session):** Die Abschnitte "Erledigt" und "Noch offen"
+> unten sind historisch. Aktueller Stand steht in Abschnitt 11 am Ende.
+
 ### Erledigt (Stand Commit 8697f47 auf `main`)
 
 - Modul 1, statische Seiten: `About.html`, `Contact.html`, Routen `/about/` und
@@ -380,3 +383,54 @@ Workflow rot.
 - Commits klein und pro Modul, Commit-Messages auf Englisch.
 - Keine Secrets committen. Der Django-`SECRET_KEY` ist vom Kurs vorgegeben und darf
   bleiben.
+
+## 11. Stand nach der lokalen Session vom 2026-10-29
+
+Alle Code-Module (1 bis 5) sind umgesetzt, lokal durchgetestet und auf `main`
+gepusht. Lokal getestet heißt: Django 8000, Node-API plus Mongo per
+`docker compose` auf 3030, Flask-Sentiment auf 5000, alles gegeneinander,
+inklusive Review-Post im Browser und Docker-Build des Django-Images.
+
+- Modul 2 bis 4: Views, Routen, Models, Migrationen, Proxy-Dienste, React-Routen,
+  React-Build committet. `fetchDealer/:id` liefert ein Array.
+- Migration `0002_reviewer_accounts` legt `root/root` und `admin/admin` als
+  Superuser an (vom Kurs für den Reviewer verlangt; so hat auch der Kubernetes-
+  Container die Accounts, weil die SQLite dort leer startet).
+- Modul 5: `.github/workflows/main.yml` (erster Lauf grün), `server/Dockerfile`,
+  `server/entrypoint.sh`, `server/deployment.yaml` (Namespace
+  `sn-labs-romanschartn`, im Lab mit `ibmcloud cr namespaces` prüfen),
+  `server/.dockerignore`, `.flake8` (schließt Migrationen aus).
+- `djangoapp/.env` enthält die Lab-URLs. Lokal startet man Django mit
+  Umgebungsvariablen, die `.env` nicht überschreibt:
+  `backend_url=http://localhost:3030 sentiment_analyzer_url=http://localhost:5000/ python manage.py runserver`
+- Review-Texte und Bundesstaaten werden vor dem Backend-Aufruf URL-kodiert
+  (`urllib.parse.quote`), Flask-Route ist `/analyze/<path:input_txt>`.
+
+### Abgabe-Ordner `submission/`
+
+Alle Textdateien der AI-graded-Rubrik liegen dort, plus die lokalen Screenshots
+mit sichtbarer Adressleiste (`admin_login.png`, `admin_logout.png`,
+`get_dealers.png`, `get_dealers_loggedin.png`, `dealersbystate.png`,
+`dealer_id_reviews.png`, `dealership_review_submission.png`, `added_review.png`).
+Screenshots entstehen über eine separate Chrome-Instanz (playwright-core, headed)
+und einen Fenster-Capture per PowerShell `PrintWindow`, damit die URL im Bild ist.
+
+### Noch offen (nur IBM-Cloud, macht der User im Lab)
+
+1. Sentiment-Dienst auf Code Engine deployen (Befehle Abschnitt 9). Die URL
+   dann in `djangoapp/.env` und `submission/analyzereview.txt` eintragen
+   (Platzhalter `REPLACE-WITH-CODE-ENGINE-ID`), committen, pushen.
+2. Im Lab: `git pull`, Node-API per `docker-compose up` starten, Django-Image
+   bauen und pushen, `kubectl apply -f deployment.yaml`, `port-forward`.
+3. Screenshots `deployed_landingpage`, `deployed_loggedin`,
+   `deployed_dealer_detail`, `deployed_add_review` mit der Lab-URL.
+4. Optional: `CICD.txt` im Lab mit `gh run list` / `gh run view <id> --verbose`
+   neu erzeugen (Inhalt stammt aus den echten GitHub-API-Daten des Laufs
+   40915289908).
+
+### Lab-Anleitungen lesen, ohne zu blättern
+
+Auf der Coursera-Seite jedes Labs gibt es den Link "lab instructions"; er zeigt
+auf `https://cf-courses-data.static.labs.skills.network/<id>/<Name>-v1.md.html`.
+Ohne `.html` am Ende liefert dieselbe URL das rohe Markdown, das sich per curl
+herunterladen lässt. Gleiches steckt im JWT (`md_url`) des Lab-Iframes.
