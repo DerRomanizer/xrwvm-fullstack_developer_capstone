@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Capstone: lokale Umgebungen nicht committen
+djangoenv/
+node_modules/
+# Capstone: local credentials notes, never commit
+submission/test-credentials.txt
+submission/pat_classic.txt
+
+# Capstone: the React build is committed, Django serves it (overrides build/ above)
+!server/frontend/build/
