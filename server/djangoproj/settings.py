@@ -32,16 +32,23 @@ LAB_URL = (
     'https://romanschartn-8000.theianext-0-labs-prod-misc-tools-us-east-0'
     '.proxy.cognitiveclass.ai'
 )
+# Kubernetes lab (port-forward 8000), used for the deployed application
+LAB_K8S_URL = (
+    'https://romanschartn-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01'
+    '.proxy.cognitiveclass.ai'
+)
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.proxy.cognitiveclass.ai',
     LAB_URL,
+    LAB_K8S_URL,
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://*.proxy.cognitiveclass.ai',
     LAB_URL,
+    LAB_K8S_URL,
 ]
 
 REST_FRAMEWORK = {

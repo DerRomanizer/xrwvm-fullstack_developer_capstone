@@ -422,8 +422,14 @@ und einen Fenster-Capture per PowerShell `PrintWindow`, damit die URL im Bild is
    (steht in `.env` und `analyzereview.txt`). Code-Engine-Befehle nur in der
    vorkonfigurierten "Code Engine CLI" aus der Skills Network Toolbox absetzen,
    im normalen Lab-Terminal fehlt die Resource Group.
-2. Im Lab: `git pull`, Node-API per `docker-compose up` starten, Django-Image
-   bauen und pushen, `kubectl apply -f deployment.yaml`, `port-forward`.
+2. Kubernetes-Lab (Modul 5b) hat den Host
+   `theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai`.
+   Node-API läuft dort per `docker-compose up` und ist öffentlich unter
+   `https://romanschartn-3030.<Host>` erreichbar (steht als `backend_url` in
+   `.env`). Deployment-URL ist `https://romanschartn-8000.<Host>`
+   (`submission/deploymentURL.txt`). Noch zu tun im Lab: `git pull`,
+   Django-Image bauen und pushen, `kubectl apply -f deployment.yaml`,
+   `port-forward`.
 3. Screenshots `deployed_landingpage`, `deployed_loggedin`,
    `deployed_dealer_detail`, `deployed_add_review` mit der Lab-URL.
 4. Optional: `CICD.txt` im Lab mit `gh run list` / `gh run view <id> --verbose`
