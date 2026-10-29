@@ -417,9 +417,11 @@ und einen Fenster-Capture per PowerShell `PrintWindow`, damit die URL im Bild is
 
 ### Noch offen (nur IBM-Cloud, macht der User im Lab)
 
-1. Sentiment-Dienst auf Code Engine deployen (Befehle Abschnitt 9). Die URL
-   dann in `djangoapp/.env` und `submission/analyzereview.txt` eintragen
-   (Platzhalter `REPLACE-WITH-CODE-ENGINE-ID`), committen, pushen.
+1. Erledigt am 2026-10-29: Sentiment-Dienst läuft auf Code Engine unter
+   `https://sentianalyzer.2gjgq7uih42l.us-south.codeengine.appdomain.cloud/`
+   (steht in `.env` und `analyzereview.txt`). Code-Engine-Befehle nur in der
+   vorkonfigurierten "Code Engine CLI" aus der Skills Network Toolbox absetzen,
+   im normalen Lab-Terminal fehlt die Resource Group.
 2. Im Lab: `git pull`, Node-API per `docker-compose up` starten, Django-Image
    bauen und pushen, `kubectl apply -f deployment.yaml`, `port-forward`.
 3. Screenshots `deployed_landingpage`, `deployed_loggedin`,
